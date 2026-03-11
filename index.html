@@ -9,21 +9,26 @@
         h1 { color: #2d5a27; text-align: center; border-bottom: 2px solid #2d5a27; padding-bottom: 10px; }
         .info-box { background: white; border: 1px solid #ddd; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
         
-        /* Układ jedna pod drugą */
+        /* Nagłówek działki: Opis do lewej, przycisk do prawej */
+        .map-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }
+        .map-header h3 { color: #2d5a27; margin: 0; font-size: 1.1em; text-align: left; }
+
         .maps-container { display: flex; flex-direction: column; gap: 30px; margin-top: 20px; }
         .map-item { background: white; padding: 20px; border-radius: 8px; border: 1px solid #ddd; text-align: center; }
-        .map-item h3 { color: #2d5a27; margin-top: 0; font-size: 1.2em; text-align: left; border-bottom: 1px solid #eee; padding-bottom: 10px; }
         
-        /* Styl dla obrazków */
-        .map-image { width: 100%; height: auto; border: 1px solid #ccc; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        /* Styl dla obrazków - kursor rączka sugeruje kliknięcie */
+        .map-image { width: 100%; height: auto; border: 1px solid #ccc; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); cursor: zoom-in; transition: transform 0.2s; }
+        .map-image:hover { transform: scale(1.01); }
         
-        .btn-link { display: inline-block; padding: 10px 18px; background: #2d5a27; color: white; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 0.95em; transition: background 0.2s; }
+        .btn-link { display: inline-block; padding: 8px 15px; background: #2d5a27; color: white; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 0.9em; transition: background 0.2s; white-space: nowrap; }
         .btn-link:hover { background: #1e3d1a; }
-
-        .spacer { height: 20px; } /* Pusta linia po przycisku */
 
         .contact { font-size: 1.3em; margin-top: 10px; margin-bottom: 30px; background: #2d5a27; color: white; padding: 25px; border-radius: 8px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         .contact a { color: white; text-decoration: none; border-bottom: 1px dashed white; }
+
+        /* LIGHTBOX CSS */
+        #lightbox { display: none; position: fixed; z-index: 999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); cursor: zoom-out; justify-content: center; align-items: center; }
+        #lightbox img { max-width: 95%; max-height: 95%; border: 2px solid white; border-radius: 5px; }
     </style>
 </head>
 <body>
@@ -42,15 +47,16 @@
 
     <div class="maps-container">
         <div class="map-item">
-            <h3>Łąka, 0.9000 ha, działka nr 261306_5.0003.637</h3> <a href="https://mapy.geoportal.gov.pl/imap/Imgp_2.html?locale=pl&gui=new&sessionID=261306_5.0003.637&action=identifyParcel&identyfikator=261306_5.0003.637" target="_blank" class="btn-link">Otwórz w Geoportalu</a>            <div class="spacer"></div>
-            <img src="dzialka-637.png" alt="Podgląd Geoportal działka 637 Łąka" class="map-image">
+            <div class="map-header">
+                <h3>Łąka, 0.9000 ha, działka nr 637</h3>
+                <a href="https://mapy.geoportal.gov.pl/imap/Imgp_2.html?locale=pl&gui=new&sessionID=261306_5.0003.637&action=identifyParcel&identyfikator=261306_5.0003.637" target="_blank" class="btn-link">Otwórz w Geoportalu</a>
+            </div>
+            <img src="dzialka-637.png" alt="Podgląd Geoportal działka 637 Łąka" class="map-image" onclick="openLightbox(this.src)">
         </div>
 
         <div class="map-item">
-            <h3>Las, 0.5155 ha, działka nr 261306_5.0003.717</h3> <a href="https://mapy.geoportal.gov.pl/imap/Imgp_2.html?locale=pl&gui=new&sessionID=261306_5.0003.717&action=identifyParcel&identyfikator=261306_5.0003.717" target="_blank" class="btn-link">Otwórz w Geoportalu</a>            <div class="spacer"></div>
-            <img src="dzialka-717.png" alt="Podgląd Geoportal działka 717 Las" class="map-image">
-        </div>
-    </div>
-
-</body>
-</html>
+            <div class="map-header">
+                <h3>Las, 0.5155 ha, działka nr 717</h3>
+                <a href="https://mapy.geoportal.gov.pl/imap/Imgp_2.html?locale=pl&gui=new&sessionID=261306_5.0003.717&action=identifyParcel&identyfikator=261306_5.0003.717" target="_blank" class="btn-link">Otwórz w Geoportalu</a>
+            </div>
+            <img src="dzialka-717.png" alt="Podgląd Geoportal działka 717 Las" class="map-image" onclick="openLightbox(this
