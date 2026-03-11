@@ -5,14 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Działka i las na sprzedaż - Boczkowice</title>
     <style>
-        body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; color: #222; }
-        h1 { color: #2d5a27; border-bottom: 2px solid #2d5a27; padding-bottom: 10px; }
-        h2 { font-size: 1.2em; margin-top: 30px; }
-        .info-box { background: #f9f9f9; border: 1px solid #ddd; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
-        .map-frame { border: 2px solid #2d5a27; border-radius: 5px; width: 100%; height: 500px; margin-bottom: 10px; }
-        .links { background: #eef5ee; padding: 15px; border-radius: 5px; border-left: 5px solid #2d5a27; }
-        .contact { font-size: 1.2em; font-weight: bold; margin-top: 30px; background: #2d5a27; color: white; padding: 20px; border-radius: 5px; text-align: center; }
-        a { color: #2d5a27; font-weight: bold; }
+        body { font-family: sans-serif; line-height: 1.6; max-width: 1000px; margin: 0 auto; padding: 20px; color: #222; background: #f4f4f4; }
+        h1 { color: #2d5a27; text-align: center; border-bottom: 2px solid #2d5a27; padding-bottom: 10px; }
+        .info-box { background: white; border: 1px solid #ddd; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        
+        /* Układ map */
+        .maps-grid { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
+        .map-item { flex: 1; min-width: 300px; background: white; padding: 10px; border-radius: 8px; border: 1px solid #ddd; }
+        .map-item h3 { color: #2d5a27; margin-top: 0; font-size: 1.1em; }
+        
+        .map-frame { width: 100%; height: 450px; border: 1px solid #ccc; border-radius: 4px; }
+        
+        .btn-link { display: inline-block; margin-top: 10px; padding: 8px 12px; background: #2d5a27; color: white; text-decoration: none; border-radius: 4px; font-size: 0.9em; }
+        .btn-link:hover { background: #1e3d1a; }
+
+        .contact { font-size: 1.3em; font-weight: bold; margin-top: 30px; background: #2d5a27; color: white; padding: 25px; border-radius: 8px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .contact a { color: white; text-decoration: none; }
     </style>
 </head>
 <body>
@@ -21,33 +29,40 @@
 
     <div class="info-box">
         <strong>Lokalizacja:</strong> Boczkowice, gm. Włoszczowa<br>
-        <strong>Księga Wieczysta:</strong> KI1W/00019005/7 (Działy III i IV wolne od wpisów)
+        <strong>Księga Wieczysta:</strong> KI1W/00019005/7<br>
+        <strong>Łączna powierzchnia:</strong> 1,4155 ha (Działki rozłączne)
     </div>
 
-    <h2>Specyfikacja gruntów (łączna powierzchnia 1,4155 ha)</h2>
-    <ul>
-        <li><strong>Działka nr 717:</strong> 0,5155 ha – Las (Ls)</li>
-        <li><strong>Działka nr 637:</strong> 0,9000 ha – Łąka (Ł)</li>
-    </ul>
-    <p><em>*Działki są rozłączne.</em></p>
+    <div class="maps-grid">
+        <div class="map-item">
+            <h3>Działka nr 717 (Las 0,5155 ha)</h3>
+            <iframe 
+                class="map-frame"
+                src="https://mapy.geoportal.gov.pl/imap/Imgp_2.html?identifyParcel=261306_5.0003.717" 
+                frameborder="0">
+            </iframe>
+            <a href="https://polska.geoportal2.pl/map/www/mapa.php?id=261306_5.0003.717" target="_blank" class="btn-link">Otwórz pełną mapę działki 717</a>
+        </div>
 
-    <h2>Lokalizacja na mapie (Geoportal)</h2>
-    <iframe 
-        class="map-frame"
-        src="https://mapy.geoportal.gov.pl/imap/Imgp_2.html?identifyParcel=261306_5.0003.717" 
-        frameborder="0">
-    </iframe>
-
-    <div class="links">
-        <strong>Bezpośrednie odnośniki do mapy:</strong><br>
-        📍 <a href="https://polska.geoportal2.pl/map/www/mapa.php?id=261306_5.0003.717" target="_blank">Zobacz Działkę nr 717 (LAS) w Geoportalu</a><br>
-        📍 <a href="https://polska.geoportal2.pl/map/www/mapa.php?id=261306_5.0003.637" target="_blank">Zobacz Działkę nr 637 (ŁĄKA) w Geoportalu</a>
+        <div class="map-item">
+            <h3>Działka nr 637 (Łąka 0,9000 ha)</h3>
+            <iframe 
+                class="map-frame"
+                src="https://mapy.geoportal.gov.pl/imap/Imgp_2.html?identifyParcel=261306_5.0003.637" 
+                frameborder="0">
+            </iframe>
+            <a href="https://polska.geoportal2.pl/map/www/mapa.php?id=261306_5.0003.637" target="_blank" class="btn-link">Otwórz pełną mapę działki 637</a>
+        </div>
     </div>
 
     <div class="contact">
         Cena: 62 000 PLN (do negocjacji)<br>
-        Kontakt: Paweł Adler, tel. 502 711 613
+        Paweł Adler: <a href="tel:+48502711613">502 711 613</a>
     </div>
+
+    <p style="text-align: center; color: #666; font-size: 0.8em; margin-top: 20px;">
+        *Jeśli mapa nie ładuje się poprawnie, użyj przycisków powyżej.
+    </p>
 
 </body>
 </html>
